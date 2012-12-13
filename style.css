@@ -1,0 +1,23 @@
+body,td,th {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 10px;
+    color: #056070;
+}
+.dfsf {
+    font-weight: bold;
+}
+body {
+    background-image: url(fading_background_18.png);
+    background-repeat: repeat-x;
+    margin-top: 0px;
+    color: #DBB82B;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+.fdg {
+    font-weight: bold;
+}
+h1{
+    font-size:15px;
+}
