@@ -40,3 +40,10 @@ function whois() {
     gonder('sonuc','who.php','domain='+document.getElementById('domain').value);
     return false;
 }
+
+function timeToHuman() {
+    var theDate = new Date(document.timestamp.ts.value * 1000);
+    dateString = theDate.toGMTString();
+    document.timestamp.result.value = dateString;
+    return false;
+}
