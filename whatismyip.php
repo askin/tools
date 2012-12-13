@@ -6,7 +6,9 @@ $ip = $_SERVER['REMOTE_ADDR'];
         <table width="800" cellspacing="0" cellpadding="0" border="0">
 	  <tr>
             <td width="50%" style="padding:30px; vertical-align:top; padding-top:0px;">
-              <h1 style="font-size:20px; text-decoration:none; color:#C00;">Your IP is <span style="color: #DBB82B;"><?php echo $ip; ?></p></h1>
+              <h1 style="font-size:20px; text-decoration:none; color:#C00;">
+                Your IP is <span style="color: #225533;"><?php echo $ip; ?></span>
+              </h1>
 	    </td>
           </tr>
         </table>
