@@ -44,6 +44,13 @@ include ('page_header.php');
                   </a>
                 </h1>
               </li>
+              <li>
+                <h1 style="font-size:12px;">
+                  <a href="decode-encode-url.php" style="text-decoration:none; color:#C00;">
+                     Decode / Encode URL
+                  </a>
+                </h1>
+              </li>
             </ul>
           </td>
           <td><img src="bluespacer.gif" width="2px" height="120px" alt="background"/></td>
@@ -73,4 +80,3 @@ include ('page_header.php');
       <div id="sonuc" style="color:#666; font-size:42px;"></div>
       <br />
 <?php include('footer.php'); ?>
-

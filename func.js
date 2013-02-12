@@ -47,3 +47,17 @@ function timeToHuman() {
     document.timestamp.result.value = dateString;
     return false;
 }
+
+function decodeURL() {
+    var url = document.decodeURLForm.inpDecode.value;
+    var result = decodeURIComponent(url.replace(/\+/g,  " "));
+    document.encodeURLForm.inpEncode.value = result;
+    return false;
+}
+
+function encodeURL() {
+    var url = document.encodeURLForm.inpEncode.value;
+    var result = encodeURIComponent(url);
+    document.decodeURLForm.inpDecode.value = result;
+    return false;
+}
