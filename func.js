@@ -61,3 +61,15 @@ function encodeURL() {
     document.decodeURLForm.inpDecode.value = result;
     return false;
 }
+
+function urlEncode() {
+	var obj = document.getElementById('dencoder');
+	var unencoded = obj.value;
+	obj.value = encodeURIComponent(unencoded).replace(/'/g,"%27").replace(/"/g,"%22");
+}
+
+function urlDecode() {
+	var obj = document.getElementById('dencoder');
+	var encoded = obj.value;
+	obj.value = decodeURIComponent(encoded.replace(/\+/g,  " "));
+}

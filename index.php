@@ -46,7 +46,7 @@ include ('page_header.php');
               </li>
               <li>
                 <h1 style="font-size:12px;">
-                  <a href="decode-encode-url.php" style="text-decoration:none; color:#C00;">
+                  <a href="dencoder.php" style="text-decoration:none; color:#C00;">
                      Decode / Encode URL
                   </a>
                 </h1>
@@ -70,6 +70,14 @@ include ('page_header.php');
                   <a href="http://phpwhois.ols.es/"
                      style="text-decoration:none; color:#C00;" target="blank">
                     PHP Whois Class
+                  </a>
+                </h1>
+              </li>
+              <li>
+                <h1 style="font-size:12px;">
+                  <a href="http://meyerweb.com/eric/tools/dencoder/index.html"
+                     style="text-decoration:none; color:#C00;" target="blank">
+                    URL Decoder/Encoder stolen from here.
                   </a>
                 </h1>
               </li>
