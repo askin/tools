@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  tools:
+    image: askinozgur/tools:latest
+    build: .
+    ports:
+      - 8181:80
