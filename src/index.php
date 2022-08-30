@@ -51,6 +51,13 @@ include ('page_header.php');
                   </a>
                 </h1>
               </li>
+              <li>
+                <h1 style="font-size:12px;">
+                  <a href="ascii-table.php" style="text-decoration:none; color:#C00;">
+                     Table of ASCII Characters
+                  </a>
+                </h1>
+              </li>
             </ul>
           </td>
           <td><img src="bluespacer.gif" width="2px" height="120px" alt="background"/></td>
