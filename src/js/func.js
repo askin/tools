@@ -1,5 +1,5 @@
 function gonder(divadi, url, querystr) {
-    $("div#"+divadi).html('<div align="center"><img src="ajax-loader.gif"></div>');
+    $("div#"+divadi).html('<div align="center"><img src="images/ajax-loader.gif"></div>');
     $.post(url + "?", querystr,  function(data) {
 	    $("div#"+divadi).html(data);
 	});
@@ -11,7 +11,7 @@ function bomb() {
 }
 
 function gonder2(divadi, url, querystr) {
-    $("div#"+divadi).html('<div align="center"><img src="ajax-loader.gif" alt="" /></div>');
+    $("div#"+divadi).html('<div align="center"><img src="images/ajax-loader.gif" alt="" /></div>');
     $.post(url + "&amp;", querystr,  function(data) {
 	$("div#"+divadi).html(data);
     });

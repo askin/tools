@@ -7,7 +7,7 @@ body,td,th {
     font-weight: bold;
 }
 body {
-    background-image: url(fading_background_18.png);
+    background-image: url(../images/fading_background_18.png);
     background-repeat: repeat-x;
     margin-top: 0px;
     margin-left: 0px;
