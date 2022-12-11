@@ -43,7 +43,7 @@ if (empty($blocks) || !is_array($blocks['main']))
 $r = $blocks['main'];
 $ret['registered'] = 'yes';
 
-while (list($key,$val) = each($contacts))
+foreach ($contacts as $key => $val)
 	if (isset($r[$key]))
 		{
 		if (is_array($r[$key]))
@@ -74,7 +74,7 @@ $blocks = false;
 $gkey = 'main';
 $dend = false;
 
-while (list($key,$val)=each($rawdata))
+foreach ($rawdata as $key => $val)
 	{
 	$val=trim($val);
 
@@ -109,7 +109,7 @@ while (list($key,$val)=each($rawdata))
 		if ($k=='') continue;
 		if (strstr($k,'.'))
 			{
-			eval("\$block".getvarname($k)."=\$v;");
+			$block = assign($block, $k, $v);
 			continue;
 			}
            }
@@ -325,23 +325,23 @@ if (!$items)
 				'Billing E-mail:' => 'billing.email',
 				
 				'Zone ID:' => 'zone.handle',
-                'Zone Organization:' => 'zone.organization',
-                'Zone Name:' => 'zone.name',
-                'Zone Address:' => 'zone.address.street.',
-                'Zone Address 2:' => 'zone.address.street.',
-                'Zone City:' => 'zone.address.city',
-                'Zone State/Province:' => 'zone.address.state',
-                'Zone Postal Code:' => 'zone.address.pcode',
-                'Zone Country:' => 'zone.address.country',
-                'Zone Phone Number:' => 'zone.phone',
-                'Zone Fax Number:' => 'zone.fax',
-                'Zone Email:' => 'zone.email'
-		            );
+				'Zone Organization:' => 'zone.organization',
+				'Zone Name:' => 'zone.name',
+				'Zone Address:' => 'zone.address.street.',
+				'Zone Address 2:' => 'zone.address.street.',
+				'Zone City:' => 'zone.address.city',
+				'Zone State/Province:' => 'zone.address.state',
+				'Zone Postal Code:' => 'zone.address.pcode',
+				'Zone Country:' => 'zone.address.country',
+				'Zone Phone Number:' => 'zone.phone',
+				'Zone Fax Number:' => 'zone.fax',
+				'Zone Email:' => 'zone.email'
+				);
 
-$r = '';
+$r = [];
 $disok = true;
 
-while (list($key,$val) = each($rawdata))
+foreach ($rawdata as $key => $val)
 	{
 	if (trim($val) != '')
 		{
@@ -355,7 +355,7 @@ while (list($key,$val) = each($rawdata))
 		$disok = false;
 		reset($items);
 
-		while (list($match, $field)=each($items))
+		foreach ($items as $match => $field)
 			{
 			$pos = strpos($val,$match);
 
@@ -363,11 +363,12 @@ while (list($key,$val) = each($rawdata))
 				{
 				if ($field != '')
 					{
-					$var = '$r'.getvarname($field);
 					$itm = trim(substr($val,$pos+strlen($match)));
 
-					if ($itm!='')
-						eval($var.'="'.str_replace('"','\"',$itm).'";');
+					if ($itm != '')
+						{
+						$r = assign($r,$field,str_replace('"','\"',$itm));
+						}
 					}
 
 				if (!$scanall)
@@ -393,17 +394,30 @@ return $r;
 
 //-------------------------------------------------------------------------
 
-function getvarname ( $vdef )
-{
-$parts = explode('.',$vdef);
-$var = '';
+function assign_recursive($array, $parts, $value)
+	{
+	$key = array_shift($parts);
 
-foreach($parts as $mn)
-	if ($mn == '') $var = $var.'[]';
-	else $var = $var.'["'.$mn.'"]';
+	if (count($parts) == 0)
+		{
+		if (!$key) $array[] = $value;
+		else $array[$key] = $value;
+		}
+	else
+		{
+		if (!isset($array[$key])) $array[$key] = [];
+		$array[$key] = assign_recursive($array[$key], $parts, $value);
+		}
 
-return $var;
-}
+	return $array;
+	}
+
+//-------------------------------------------------------------------------
+
+function assign($array, $vdef, $value)
+	{
+	return assign_recursive($array, explode('.', $vdef), $value);
+	}
 
 //-------------------------------------------------------------------------
 
@@ -413,7 +427,7 @@ function get_blocks ( $rawdata, $items, $partial_match = false, $def_block = fal
 $r = array();
 $endtag = '';
 
-while (list($key,$val) = each($rawdata))
+foreach ($rawdata as $key => $val)
 	{
 	$val = trim($val);
 	if ($val == '') continue;
@@ -444,9 +458,7 @@ while (list($key,$val) = each($rawdata))
 				}
 			else
 				{
-				$var = getvarname(strtok($field,'#'));
-				$itm = trim(substr($val,$pos+strlen($match)));
-				eval('$r'.$var.'=$itm;');
+				$r = assign($r, strtok($field,'#'), trim(substr($val,$pos+strlen($match))));
 				}
 
 			break;
@@ -463,7 +475,7 @@ while (list($key,$val) = each($rawdata))
 
 	// Block found, get data ...
 
-	while (list($key,$val) = each($rawdata))
+	foreach ($rawdata as $key => $val)
 		{
 		$val = trim($val);
 
@@ -515,8 +527,11 @@ while (list($key,$val) = each($rawdata))
 
 		if ($pos !== false)
 			{
-			$var = getvarname(strtok($field,'#'));
-			if ($var != '[]') eval('$r'.$var.'=$block;');
+			$var = strtok($field,'#');
+			if ($var != '')
+				{
+				$r = assign($r, $var, $block);
+				}
 			}
 		}
 	}
@@ -609,7 +624,7 @@ if ($extra_items)
 	$items = $extra_items;
 	}
 
-while (list($key,$val)=each($array))
+foreach ($array as $key => $val)
 	{
 	$ok=true;
 
@@ -618,7 +633,7 @@ while (list($key,$val)=each($array))
 		reset($items);
 		$ok = false;
 
-		while (list($match,$field) = each($items))
+		foreach ($items as $match => $field)
 			{
 			$pos = strpos(strtolower($val),$match);
 
@@ -628,7 +643,7 @@ while (list($key,$val)=each($array))
 
 			if ($field != '' && $itm != '')
 				{
-				eval('$r'.getvarname($field).'=$itm;');
+				$r = assign($r, $field, $itm);
 				}
 
 			$val = trim(substr($val,0,$pos));
@@ -832,7 +847,7 @@ while (!$ok)
 	reset($res);
 	$ok = true;
 
-	while (list($key, $val) = each($res))
+	foreach ($res as $key => $val)
 		{
 		if ($val == '' || $key == '') continue;
 
@@ -869,5 +884,3 @@ else
 
 return sprintf("%.4d-%02d-%02d",$res['y'],$res['m'],$res['d']);
 }
-
-?>

@@ -1,4 +1,3 @@
-#!/usr/local/bin/php -n
 <?php
 /*
 Whois.php        PHP classes to conduct whois queries
@@ -24,17 +23,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-*/
+ */
 
-include('whois.main.php');
+if (!defined('__XXX_HANDLER__'))
+	define('__XXX_HANDLER__', 1);
 
-if (isset($argv[1]))
-	$domain = $argv[1];
-else
-	$domain = 'example.com';
+require_once('whois.parser.php');
 
-$whois = new Whois();
-$result = $whois->Lookup($domain);
+class xxx_handler
+	{
+	function parse($data_str, $query)
+		{
+		$r['regrinfo'] = generic_parser_b($data_str['rawdata']);
 
-print_r($result);
+		if (!strncmp($data_str['rawdata'][0], 'WHOIS LIMIT EXCEEDED', 20))
+			$r['regrinfo']['registered'] = 'unknown';
+
+		$r['regyinfo']['referrer'] = 'http://www.pir.org/';
+		$r['regyinfo']['registrar'] = 'Public Interest Registry';
+		return $r;
+		}
+	}
 ?>

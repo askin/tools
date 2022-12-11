@@ -35,14 +35,15 @@ class apnic_handler
 	function parse ($data_str, $query)
 		{
 		$translate = array (
-							  'fax-no' => 'fax',
-							  'e-mail' => 'email',
-							  'nic-hdl' => 'handle',
-							  'person' => 'name',
-							  'country' => 'address',
-							  'netname' => 'name',
-							  'descr' => 'desc',
-							  'aut-num' => 'handle'
+							'fax-no' => 'fax',
+							'e-mail' => 'email',
+							'nic-hdl' => 'handle',
+							'person' => 'name',
+							'country' => 'address',
+							'netname' => 'name',
+							'descr' => 'desc',
+							'aut-num' => 'handle',
+							'country' => 'country'
 							  );
 
 		$contacts = array (
@@ -73,7 +74,7 @@ class apnic_handler
 
 			$r['registered'] = 'yes';
 
-			while (list($key,$val) = each($contacts))
+			foreach ($contacts as $key => $val)
 				if (isset($rb[$key]))
 					{
 					if (is_array($rb[$key]))
@@ -119,4 +120,3 @@ class apnic_handler
 		return $r;
 		}
 }
-?>
