@@ -53,6 +53,13 @@ include ('page_header.php');
               </li>
               <li>
                 <h1 style="font-size:12px;">
+                  <a href="tckn.html" style="text-decoration:none; color:#C00;">
+                     Validate and Generate TCKN
+                  </a>
+                </h1>
+              </li>
+              <li>
+                <h1 style="font-size:12px;">
                   <a href="ascii-table.php" style="text-decoration:none; color:#C00;">
                      Table of ASCII Characters
                   </a>

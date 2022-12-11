@@ -1,7 +1,11 @@
 <?php
 $title = "What is my ip?";
 include('page_header.php');
-$ip = $_SERVER['REMOTE_ADDR'];
+if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+}
 ?>
         <table width="800" cellspacing="0" cellpadding="0" border="0">
 	  <tr>
