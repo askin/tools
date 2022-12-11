@@ -3,9 +3,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
      <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
-    <script type="text/javascript" src="jquery.min.js"></script>
-    <script type="text/javascript" src="func.js"></script>
+    <link rel="stylesheet" href="style/style.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/func.js"></script>
   </head>
   <body>
     <div align="center">
