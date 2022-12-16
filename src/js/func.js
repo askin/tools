@@ -42,9 +42,9 @@ function whois() {
 }
 
 function timeToHuman() {
-    var theDate = new Date(document.timestamp.ts.value * 1000);
+    var theDate = new Date(document.getElementById('timestamp').value * 1000);
     dateString = theDate.toGMTString();
-    document.timestamp.result.value = dateString;
+    document.getElementById('result').value = dateString;
     return false;
 }
 

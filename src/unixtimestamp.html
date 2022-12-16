@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Unix Time Conversion</title>
+        <link rel="stylesheet" href="style/style.css" type="text/css" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/func.js"></script>
+    </head>
+    <body>
+        <div align="center">
+            <div style="background-color:#333; color:#fff; height:55px;"><br />
+                <span style="color:#ccc; font-size:16px;">
+                    <a href="/" style="color:#ccc;">~/tools</a>
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                </span>
+                <a href="#" class="fdg" style="color:#fff; font-size:26px; text-decoration:none;">kelebek's tools</a>
+                <span style="color:#ccc; font-size:16px;">
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                    <a href="http://askin.ws" style="color:#ccc;">~/askin</a>
+                </span>
+            </div>
+        </div>
+        <div class="content">
+            <div style="width: %50; float: left; padding:30px;">
+                <form onsubmit="return timeToHuman();" action="">
+                    <h1 style="font-size:30px;"><a href="?" style="text-decoration:none; color:#C00;">Unix Timestamp</a></h1>
+                    <input type="text" name="ts" id="timestamp" style="font-size:19px; border:18px #C00 solid" />
+                    <br />
+                    <br />
+                    <input type="submit" name="button" id="button" value="convert" style="font-size:19px;" />
+                </form>
+            </div>
+            <div style="width: %50; float: left; padding:30px;">
+                <form onsubmit="return timeToHuman();" action="">
+                    <h1 style="font-size:30px; color:#066">
+                        <a href="?" style="text-decoration:none; color:#666;">Date/Time</a>
+                    </h1>
+                    <input type="text" id="result" style="font-size:19px; border:18px #666 solid" disabled="disabled" />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+
