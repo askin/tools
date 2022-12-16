@@ -1,11 +1,9 @@
-body,td,th {
+body, td, th {
     font-family: Tahoma, Geneva, sans-serif;
     font-size: 10px;
     color: #056070;
 }
-.dfsf {
-    font-weight: bold;
-}
+
 body {
     background-image: url(../images/fading_background_18.png);
     background-repeat: repeat-x;
@@ -16,7 +14,22 @@ body {
 }
 .fdg {
     font-weight: bold;
+    color:#fff;
+    font-size:26px;
+    text-decoration:none;
 }
-h1{
+h1 {
     font-size:15px;
+}
+
+textarea {
+    font-size: 19px;
+    width:700px;
+    border:18px #C00 solid;
+    margin: 0px 0px 20px 0px;
+}
+
+.content {
+    width: 800px;
+    margin: 0 auto;
 }
