@@ -1,4 +1,4 @@
-function generateTckn() {
+function generateTckn(copy) {
     
     let tmpTckn = "" + Math.floor(Math.random() * 10000000000000000)
     let splitTckn = tmpTckn.substr(0, 9).split("").map(numStr => parseInt(numStr));
@@ -16,6 +16,11 @@ function generateTckn() {
 
     document.getElementById('tckn').value = tckn;
     validateTckn();
+
+    if (copy) {
+        document.getElementById('tckn').select();
+        document.execCommand("copy");        
+    }
 }
 
 function validateTckn() {
